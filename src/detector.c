@@ -350,9 +350,6 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
         // set initial value, even if resume training from 10000 iteration
         if (avg_time < 0) avg_time = time_remaining;
         else avg_time = alpha_time * time_remaining + (1 -  alpha_time) * avg_time;
-#ifdef OPENCV
-        draw_train_loss(windows_name, img, img_size, avg_loss, max_img_loss, iteration, net.max_batches, mean_average_precision, draw_precision, "mAP%", dont_show, mjpeg_port, avg_time);
-#endif    // OPENCV
 
         //if (i % 1000 == 0 || (i < 1000 && i % 100 == 0)) {
         //if (i % 100 == 0) {
@@ -1533,9 +1530,6 @@ void calc_anchors(char *datacfg, int num_of_clusters, int width, int height, int
     }
 
     if (show) {
-#ifdef OPENCV
-        show_acnhors(number_of_boxes, num_of_clusters, rel_width_height_array, anchors_data, width, height);
-#endif // OPENCV
     }
     free(rel_width_height_array);
     free(counter_per_class);
@@ -1624,7 +1618,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output);
         save_image(im, "predictions");
         if (!dont_show) {
-            show_image(im, "predictions");
+//   show_image(im, "predictions");
         }
 
         if (json_file) {

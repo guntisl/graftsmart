@@ -1,0 +1,7 @@
+ GPU isn't used 
+mini_batch = 1, batch = 24, time_steps = 1, train = 0 
+nms_kind: greedynms (1), beta = 0.600000 
+nms_kind: greedynms (1), beta = 0.600000 
+
+ seen 64, trained: 384 K-images (6 Kilo-batches_64) 
+snaps/image111.png: Predicted in 3299.678000 milli-seconds.
